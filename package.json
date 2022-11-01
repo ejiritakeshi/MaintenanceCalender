@@ -1,0 +1,35 @@
+{
+  "name": "maintenancecalender",
+  "version": "1.0.0",
+  "description": "---",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint && mocha",
+    "lint": "eslint --fix --ext .js ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ejiritakeshi/MaintenanceCalender.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ejiritakeshi/MaintenanceCalender/issues"
+  },
+  "homepage": "https://github.com/ejiritakeshi/MaintenanceCalender#readme",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "mocha": "^10.1.0",
+    "prettier": "^2.7.1",
+    "pretty-quick": "^3.1.3"
+  }
+}
