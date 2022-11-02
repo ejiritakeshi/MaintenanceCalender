@@ -7,9 +7,10 @@ class CalendarController {
         Window.calendarController.setDate(selectedDate)
       },
 
-      dateClick: (e) => {
-        console.log("dateClick:", e);
-      },
+      // dateClick: (e) => {
+      //   console.log("dateClick:", e);
+
+      // },
 
       eventClick: (e) => {
         Window.input.displayEvent(e.event);
@@ -50,6 +51,10 @@ class CalendarController {
       // borderColor: "red",
       allDay: true
     })
+    this.selectedEvent?.remove();
+  }
+
+  removeEvent() {
     this.selectedEvent?.remove();
   }
 }
