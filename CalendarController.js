@@ -39,8 +39,11 @@ class CalendarController {
 
   setEvent(event) {
     this.selectedEvent = event;
-  }
 
+    event.setProp("borderColor", "red");
+    Window.input.toggleInputButtonTitle();
+  }
+  
   addEvent(title, description) {
     this.calendar.addEvent({
       title: title,
@@ -51,15 +54,22 @@ class CalendarController {
       // borderColor: "red",
       allDay: true
     })
-    this.selectedEvent?.remove();
-  }
 
+    if (this.selectedEvent) {
+      this.removeEvent();
+    }
+  }
+  
   removeEvent() {
-    this.selectedEvent?.remove();
-  }
-
-  cancelEditing() {
+    this.selectedEvent.remove();
     this.selectedEvent = undefined;
+    Window.input.toggleInputButtonTitle();
+  }
+  
+  cancelEditing() {
+    this.selectedEvent.setProp("borderColor", "transparent");
+    this.selectedEvent = undefined;
+    Window.input.toggleInputButtonTitle();
   }
 }
 
