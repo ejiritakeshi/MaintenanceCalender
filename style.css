@@ -1,0 +1,9 @@
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#calendar {
+    width: 600px;
+}
