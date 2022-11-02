@@ -33,7 +33,8 @@ class Input {
     maintenanceMenuEl.className = "menu";
 
     const menuTitle = document.createElement("span");
-    menuTitle.innerText = "整備内容"
+    menuTitle.id = "menuTitle";
+    menuTitle.innerText = "整備内容";
     maintenanceMenuEl.append(menuTitle);
 
     const maintenanceMenu = document.createElement("ul");
@@ -49,8 +50,14 @@ class Input {
   createMaintenanceItem(item) {
     const maintenanceItem = document.createElement("li");
     maintenanceItem.innerText = item;
+    maintenanceItem.addEventListener('click', this.maintenanceItemClicked);
 
     return maintenanceItem;
+  }
+
+  maintenanceItemClicked() {
+    const menuTitle = document.getElementById("menuTitle");
+    menuTitle.innerText = this.innerText;
   }
 
   // 入力ボタン
@@ -58,26 +65,32 @@ class Input {
     const button = document.createElement("button");
     button.id = "InputButton"
     button.innerText = "入力！"
-    button.addEventListener('click', () => {
-      const odoEl = document.getElementById('オドメーター');
-      const odoValue = odoEl.value;
-      odoEl.value = "";
-
-      const costEl = document.getElementById("整備費用");
-      const costValue = costEl.value;
-      costEl.value = "";
-
-      Window.calendar.calendar.addEvent({
-          title: 'The Title', 
-          start: Window.calendar.selectedDateStart,
-          end: Window.calendar.selectedDateEnd,
-          description: odoValue + "km\n" + costValue + "円",
-          backgroundColor: "rgb(0, 255, 0)",
-          borderColor: "red",
-          allDay: true
-        });
-    })
+    button.addEventListener('click', this.inputButtonClicked)
     return button
+  }
+
+  inputButtonClicked() {
+    const odoEl = document.getElementById('オドメーター');
+    const odoValue = odoEl.value;
+    odoEl.value = "";
+
+    const costEl = document.getElementById("整備費用");
+    const costValue = costEl.value;
+    costEl.value = "";
+
+    const menuTitle = document.getElementById("menuTitle");
+    const maintenance = menuTitle.innerText;
+    menuTitle.innerText = "整備内容";
+
+    Window.calendar.calendar.addEvent({
+        title: maintenance,
+        start: Window.calendar.selectedDateStart,
+        end: Window.calendar.selectedDateEnd,
+        description: odoValue + "km\n" + costValue + "円",
+        backgroundColor: "rgb(0, 255, 0)",
+        borderColor: "red",
+        allDay: true
+      });
   }
 }
 
