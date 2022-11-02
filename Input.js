@@ -46,13 +46,8 @@ class Input {
   }
 
   createMaintenanceItem(item) {
-    // const itemName = document.createElement("a")
-    // itemName.href = "#";
-    // itemName.innerText = item;
-    
     const maintenanceItem = document.createElement("li");
     maintenanceItem.innerText = item;
-//    maintenanceItem.append(itemName);
 
     return maintenanceItem;
   }
@@ -62,6 +57,15 @@ class Input {
     const button = document.createElement("button");
     button.id = "InputButton"
     button.innerText = "入力！"
+    button.addEventListener('click', () => {
+      console.log(Window.calendar);
+      Window.calendar.calendar.addEvent({
+          title: 'The Title', 
+          start: Window.calendar.selectedDateStart,
+          end: Window.calendar.selectedDateEnd,
+          allDay: true
+        });
+    })
     return button
   }
 }
