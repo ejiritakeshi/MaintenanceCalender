@@ -1,32 +1,9 @@
-let calendar; // カレンダーをグローバル変数とする。
-
-
 document.addEventListener("DOMContentLoaded", () => {
-  // const calendarEl = document.getElementById("calendar");
-  // calendar = new FullCalendar.Calendar(calendarEl, {
-  //   initialView: "dayGridMonth",
-  //   businessHours: true,
-  //   editable: true,
-  //   // 日本語化
-  //   locale: "ja",
-  //   // buttonText: {
-  //   //   prev: "<",
-  //   //   next: ">",
-  //   //   prevYear: "<<",
-  //   //   nextYear: ">>",
-  //   //   today: "今日",
-  //   //   month: "月",
-  //   //   week: "週",
-  //   //   day: "日",
-  //   //   list: "一覧",
-  //   // },
-  // });
-  // calendar.render();
-  
   const input = new Input();
   const inputArea = input.createInputDOM();
   const inputEl = document.getElementById("input");
   inputEl.appendChild(inputArea);
+  Window.input = input;
 });
 
 const events = [
@@ -55,50 +32,14 @@ const events = [
 window.onload = (e) => {
   // Calendar
   const elem = document.getElementById("calendar");
-  const calendar = new FullCalendar.Calendar(elem, {
-    // initialView: "timeGridMonth",
-    // initialDate: "2022-11-02",
-    events: events,
-    dateClick: (e) => {
-      console.log("dateClick:", e);
-    },
-    eventClick: (e) => {
-      console.log("eventClick:", e.event.title);
-    },
-    eventDidMount: (e) => {
-      tippy(e.el, {
-        // Tippy
-        content: e.event.extendedProps.description,
-      });
-    },
-    // 日付をクリック、または範囲を選択したイベント
-    selectable: true,
-    select: function (info) {
-      Window.calendar.selectedDateStart = info.start;
-      Window.calendar.selectedDateEnd = info.end;
-    },
-
-    // eventClick: function (eventName) {
-    //   // console.dir(event); オブジェクトの中身をチェック。
-    //   const title = prompt("予定を更新してください:");
-    //   if (title && title != "") {
-    //     eventName.title = title;
-    //     //イベント（予定）の修正
-    //     $("#calendar").fullCalendar("updateEvent", eventName);
-    //   } else {
-    //     //イベント（予定）の削除  idを指定して削除。
-    //     $("#calendar").fullCalendar("removeEvents", eventName);
-    //   }
-    // },
-  });
+  const calendarController = new CalendarController();
+  const calendar = new FullCalendar.Calendar(elem, calendarController.configurationObject);
   calendar.render();
+  
+  calendarController.setCalendar(calendar);
+  Window.calendarController = calendarController;
 
   const m = moment(); //現在の時刻が入る
   const output = m.format("YYYY-MM-DD");
 
-  Window.calendar = {
-    calendar: calendar,
-    selectedDateStart: output,
-    selectedDateEnd: output,
-  };
-};;
+};

@@ -4,8 +4,10 @@ class Input {
     
     inputDom.append(this.createValueInput("オドメーター", "km"));
     inputDom.append(this.createValueInput("整備費用", "円"));
-    inputDom.append(this.createMaintenanceMenu())
-    inputDom.append(this.createInputButton());
+    inputDom.append(this.createMaintenanceMenu());
+    inputDom.append(this.createButton("入力！"));
+    inputDom.append(this.createButton("消去"));
+    inputDom.append(this.createButton("キャンセル"));
     return inputDom;
   }
 
@@ -40,18 +42,18 @@ class Input {
     const maintenanceMenu = document.createElement("ul");
     maintenanceMenuEl.append(maintenanceMenu);
 
-    maintenanceMenu.append(this.createMaintenanceItem("クラッチワイヤー調整"));
-    maintenanceMenu.append(this.createMaintenanceItem("チェーン調整"));
-    maintenanceMenu.append(this.createMaintenanceItem("タイヤ空気圧調整"));
-    maintenanceMenu.append(this.createMaintenanceItem("タイヤ交換"));
     maintenanceMenu.append(this.createMaintenanceItem("エンジンオイル交換"));
     maintenanceMenu.append(this.createMaintenanceItem("オイルフィルター交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("クラッチワイヤー調整"));
+    maintenanceMenu.append(this.createMaintenanceItem("車検"));
+    maintenanceMenu.append(this.createMaintenanceItem("スプロケ交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("タイヤ空気圧調整"));
+    maintenanceMenu.append(this.createMaintenanceItem("タイヤ交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("チェーン調整"));
     maintenanceMenu.append(this.createMaintenanceItem("バッテリー充電"));
     maintenanceMenu.append(this.createMaintenanceItem("プラグ交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("スプロケ交換"));
     maintenanceMenu.append(this.createMaintenanceItem("ブレーキフルード交換"));
     maintenanceMenu.append(this.createMaintenanceItem("フロントフォークオイル交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("車検"));
 
     return maintenanceMenuEl;
   }
@@ -69,16 +71,39 @@ class Input {
     menuTitle.innerText = this.innerText;
   }
 
-  // 入力ボタン
-  createInputButton() {
+  // ボタン
+  createButton(buttonText) {
     const button = document.createElement("button");
-    button.id = "InputButton"
-    button.innerText = "入力！"
-    button.addEventListener('click', this.inputButtonClicked)
-    return button
+    button.innerText = buttonText;
+
+    let callback;
+    switch (buttonText) {
+      case "入力！":
+        button.id = "InputButton";
+        callback = this.inputButtonClicked;
+        break;
+      case "消去":
+        button.id = "RemoveButton";
+        callback = this.removeButtonClicked;
+        break;
+      case "キャンセル":
+        button.id = "CancelButton";
+        callback = this.cancelButtonClicked;
+        break;
+      default:
+        break;
+    }
+    button.addEventListener('click', callback);
+
+    const area = document.createElement("div");
+    area.append(button);
+    return area;
   }
 
+  // ボタンクリック
   inputButtonClicked() {
+    console.log("input button clicked");
+
     const odoEl = document.getElementById('オドメーター');
     const odoValue = odoEl.value;
     odoEl.value = "";
@@ -91,15 +116,33 @@ class Input {
     const maintenance = menuTitle.innerText;
     menuTitle.innerText = "整備内容";
 
-    Window.calendar.calendar.addEvent({
-        title: maintenance,
-        start: Window.calendar.selectedDateStart,
-        end: Window.calendar.selectedDateEnd,
-        description: odoValue + "km\n" + costValue + "円",
-        backgroundColor: "rgb(0, 255, 0)",
-        borderColor: "red",
-        allDay: true
-      });
+    Window.calendarController.addEvent(maintenance, odoValue + "km\n" + costValue + "円");
+  }
+
+  removeButtonClicked() {
+    console.log("remove button");
+    Window.calendarController.removeEvent();
+  }
+
+  cancelButtonClicked() {
+    console.log("cancel button");
+    Window.calendarController.cancelEditing();
+  }
+
+  // event表示
+  displayEvent(event) {
+    const menuTitle = document.getElementById("menuTitle");
+    menuTitle.innerText = event.title;
+
+    const description = event.extendedProps.description;
+    const kmIndex = description.indexOf("km");
+    const odometer = description.slice(0, kmIndex);
+    const odoEl = document.getElementById("オドメーター");
+    odoEl.value = odometer;
+
+    const cost = description.slice(kmIndex + 3, -1);
+    const costEl = document.getElementById("整備費用");
+    costEl.value = cost;
   }
 }
 
