@@ -43,18 +43,9 @@ class Input {
     const maintenanceMenu = document.createElement("ul");
     maintenanceMenuEl.append(maintenanceMenu);
 
-    maintenanceMenu.append(this.createMaintenanceItem("エンジンオイル交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("オイルフィルター交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("クラッチワイヤー調整"));
-    maintenanceMenu.append(this.createMaintenanceItem("車検"));
-    maintenanceMenu.append(this.createMaintenanceItem("スプロケ交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("タイヤ空気圧調整"));
-    maintenanceMenu.append(this.createMaintenanceItem("タイヤ交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("チェーン調整"));
-    maintenanceMenu.append(this.createMaintenanceItem("バッテリー充電"));
-    maintenanceMenu.append(this.createMaintenanceItem("プラグ交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("ブレーキフルード交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("フロントフォークオイル交換"));
+    for (const item of menuItems) {
+      maintenanceMenu.append(this.createMaintenanceItem(item));
+    }
 
     return maintenanceMenuEl;
   }
@@ -131,7 +122,7 @@ class Input {
     const menuTitle = document.getElementById("menuTitle");
     const maintenance = menuTitle.innerText;
     
-    Window.calendarController.addEvent(maintenance, odoValue + "km\n" + costValue + "円");
+    Window.calendarController.addEvent(maintenance, odoValue, costValue);
   }
   
   removeButtonClicked() {
@@ -171,5 +162,20 @@ class Input {
     costEl.value = cost;
   }
 }
+
+const menuItems = [
+  "エンジンオイル交換",
+  "オイルフィルター交換",
+  "クラッチワイヤー調整",
+  "車検",
+  "スプロケ交換",
+  "タイヤ空気圧調整",
+  "タイヤ交換",
+  "チェーン調整",
+  "バッテリー充電",
+  "プラグ交換",
+  "ブレーキフルード交換",
+  "フロントフォークオイル交換"
+];
 
 Window.Input = Input;
