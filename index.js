@@ -35,7 +35,7 @@ window.onload = (e) => {
   const calendarController = new CalendarController();
   const calendar = new FullCalendar.Calendar(elem, calendarController.configurationObject);
   calendar.render();
-  
+
   calendarController.setCalendar(calendar);
   Window.calendarController = calendarController;
 

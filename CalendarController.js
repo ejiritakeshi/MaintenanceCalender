@@ -2,6 +2,7 @@ class CalendarController {
   constructor() {
     this.configurationObject = {
       selectable: true,
+      unselectAuto: false,
 
       select: function (selectedDate) {
         Window.calendarController.setDate(selectedDate)
