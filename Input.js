@@ -40,9 +40,18 @@ class Input {
     const maintenanceMenu = document.createElement("ul");
     maintenanceMenuEl.append(maintenanceMenu);
 
-    maintenanceMenu.append(this.createMaintenanceItem("整備１"));
-    maintenanceMenu.append(this.createMaintenanceItem("整備２"));
-    maintenanceMenu.append(this.createMaintenanceItem("整備３"));
+    maintenanceMenu.append(this.createMaintenanceItem("クラッチワイヤー調整"));
+    maintenanceMenu.append(this.createMaintenanceItem("チェーン調整"));
+    maintenanceMenu.append(this.createMaintenanceItem("タイヤ空気圧調整"));
+    maintenanceMenu.append(this.createMaintenanceItem("タイヤ交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("エンジンオイル交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("オイルフィルター交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("バッテリー充電"));
+    maintenanceMenu.append(this.createMaintenanceItem("プラグ交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("スプロケ交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("ブレーキフルード交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("フロントフォークオイル交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("車検"));
 
     return maintenanceMenuEl;
   }
