@@ -91,15 +91,17 @@ class Input {
     const maintenance = menuTitle.innerText;
     menuTitle.innerText = "整備内容";
 
-    Window.calendarDate.calendar.addEvent({
-        title: maintenance,
-        start: Window.calendarDate.selectedDateStart,
-        end: Window.calendarDate.selectedDateEnd,
-        description: odoValue + "km\n" + costValue + "円",
-        backgroundColor: "rgb(0, 255, 0)",
-        borderColor: "red",
-        allDay: true
-      });
+    Window.calendarController.addEvent(maintenance, odoValue + "km\n" + costValue + "円");
+
+    // Window.calendarDate.calendar.addEvent({
+    //     title: maintenance,
+    //     start: Window.calendarDate.selectedDateStart,
+    //     end: Window.calendarDate.selectedDateEnd,
+    //     description: odoValue + "km\n" + costValue + "円",
+    //     backgroundColor: "rgb(0, 255, 0)",
+    //     borderColor: "red",
+    //     allDay: true
+    //   });
   }
 
   displayEvent(event) {

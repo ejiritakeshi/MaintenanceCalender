@@ -3,9 +3,8 @@ class CalendarController {
     this.configurationObject = {
       selectable: true,
 
-      select: function (info) {
-        Window.calendarDate.selectedDateStart = info.start;
-        Window.calendarDate.selectedDateEnd = info.end;
+      select: function (selectedDate) {
+        Window.calendarController.setDate(selectedDate)
       },
 
       dateClick: (e) => {
@@ -23,6 +22,30 @@ class CalendarController {
         });
       },
     }
+  }
+
+  setCalendar(calendar) {
+    this.calendar = calendar;
+  }
+
+  setDate(date) {
+    this.selectedDate = {
+      start: date.start,
+      end: date.end
+    }
+  }
+
+  addEvent(title, description) {
+    this.calendar.addEvent({
+      title: title,
+      start: this.selectedDate.start,
+      end: this.selectedDate.end,
+      description: description,
+      // backgroundColor: "rgb(0, 255, 0)",
+      // borderColor: "red",
+      allDay: true
+    })
+
   }
 }
 
