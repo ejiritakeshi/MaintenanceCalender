@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // },
   });
   calendar.render();
+  
+  const input = new Input();
+  const inputArea = input.createInputDOM();
+  const inputEl = document.getElementById("input");
+  inputEl.appendChild(inputArea);
 });
 
 console.log("main.js!!");
