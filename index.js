@@ -75,21 +75,10 @@ window.onload = (e) => {
     // 日付をクリック、または範囲を選択したイベント
     selectable: true,
     select: function (info) {
-      //alert("selected " + info.startStr + " to " + info.endStr);
-
-      // 入力ダイアログ
-      const eventName = prompt("整備内容入力して下さい");
-
-      if (eventName) {
-        // イベントの追加
-        calendar.addEvent({
-          title: eventName,
-          start: info.start,
-          end: info.end,
-          allDay: true,
-        });
-      }
+        Window.calendar.selectedDateStart = info.start
+        Window.calendar.selectedDateEnd = info.end
     },
+    
     eventClick: function (eventName) {
       // console.dir(event); オブジェクトの中身をチェック。
       const title = prompt("予定を更新してください:");
@@ -104,4 +93,9 @@ window.onload = (e) => {
     },
   });
   calendar.render();
+  Window.calendar = {
+      calendar: calendar,
+      selectedDateStart: "2022-11-02",
+      selectedDateEnd: "2022-11-09"
+  }
 };
