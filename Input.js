@@ -8,6 +8,7 @@ class Input {
     inputDom.append(this.createButton("入力！"));
     inputDom.append(this.createButton("消去"));
     inputDom.append(this.createButton("キャンセル"));
+
     return inputDom;
   }
 
@@ -93,7 +94,10 @@ class Input {
       default:
         break;
     }
-    button.addEventListener('click', callback);
+    button.addEventListener('click', () => {
+      callback();
+      this.initializeInputForm();
+    });
 
     const area = document.createElement("div");
     area.append(button);
@@ -118,31 +122,37 @@ class Input {
 
   // ボタンクリック
   inputButtonClicked() {
-    console.log("input button clicked");
-
     const odoEl = document.getElementById('オドメーター');
     const odoValue = odoEl.value;
-    odoEl.value = "";
 
     const costEl = document.getElementById("整備費用");
     const costValue = costEl.value;
-    costEl.value = "";
 
     const menuTitle = document.getElementById("menuTitle");
     const maintenance = menuTitle.innerText;
-    menuTitle.innerText = "整備内容";
-
+    
     Window.calendarController.addEvent(maintenance, odoValue + "km\n" + costValue + "円");
   }
-
+  
   removeButtonClicked() {
     console.log("remove button");
     Window.calendarController.removeEvent();
   }
-
+  
   cancelButtonClicked() {
     console.log("cancel button");
     Window.calendarController.cancelEditing();
+  }
+  
+  initializeInputForm() {
+    const odoEl = document.getElementById('オドメーター');
+    odoEl.value = "";
+  
+    const costEl = document.getElementById("整備費用");
+    costEl.value = "";
+  
+    const menuTitle = document.getElementById("menuTitle");
+    menuTitle.innerText = "整備内容";
   }
 
   // event表示
