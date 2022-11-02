@@ -57,6 +57,10 @@ class CalendarController {
   removeEvent() {
     this.selectedEvent?.remove();
   }
+
+  cancelEditing() {
+    this.selectedEvent = undefined;
+  }
 }
 
 Window.CalendarController = CalendarController;

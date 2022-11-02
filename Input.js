@@ -7,6 +7,7 @@ class Input {
     inputDom.append(this.createMaintenanceMenu());
     inputDom.append(this.createButton("入力！"));
     inputDom.append(this.createButton("消去"));
+    inputDom.append(this.createButton("キャンセル"));
     return inputDom;
   }
 
@@ -84,6 +85,11 @@ class Input {
       case "消去":
         button.id = "RemoveButton";
         callback = this.removeButtonClicked;
+        break;
+      case "キャンセル":
+        button.id = "CancelButton";
+        callback = this.cancelButtonClicked;
+        break;
       default:
         break;
     }
@@ -116,6 +122,11 @@ class Input {
   removeButtonClicked() {
     console.log("remove button");
     Window.calendarController.removeEvent();
+  }
+
+  cancelButtonClicked() {
+    console.log("cancel button");
+    Window.calendarController.cancelEditing();
   }
 
   // event表示
