@@ -1,26 +1,26 @@
 let calendar; // カレンダーをグローバル変数とする。
 
 document.addEventListener("DOMContentLoaded", () => {
-  const calendarEl = document.getElementById("calendar");
-  calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: "dayGridMonth",
-    businessHours: true,
-    editable: true,
-    // 日本語化
-    locale: "ja",
-    // buttonText: {
-    //   prev: "<",
-    //   next: ">",
-    //   prevYear: "<<",
-    //   nextYear: ">>",
-    //   today: "今日",
-    //   month: "月",
-    //   week: "週",
-    //   day: "日",
-    //   list: "一覧",
-    // },
-  });
-  calendar.render();
+  // const calendarEl = document.getElementById("calendar");
+  // calendar = new FullCalendar.Calendar(calendarEl, {
+  //   initialView: "dayGridMonth",
+  //   businessHours: true,
+  //   editable: true,
+  //   // 日本語化
+  //   locale: "ja",
+  //   // buttonText: {
+  //   //   prev: "<",
+  //   //   next: ">",
+  //   //   prevYear: "<<",
+  //   //   nextYear: ">>",
+  //   //   today: "今日",
+  //   //   month: "月",
+  //   //   week: "週",
+  //   //   day: "日",
+  //   //   list: "一覧",
+  //   // },
+  // });
+  // calendar.render();
   
   const input = new Input();
   const inputArea = input.createInputDOM();
@@ -99,5 +99,3 @@ window.onload = (e) => {
       selectedDateEnd: "2022-11-09"
   }
 };
-
-
