@@ -1,5 +1,6 @@
 let calendar; // カレンダーをグローバル変数とする。
 
+
 document.addEventListener("DOMContentLoaded", () => {
   // const calendarEl = document.getElementById("calendar");
   // calendar = new FullCalendar.Calendar(calendarEl, {
@@ -28,8 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
   inputEl.appendChild(inputArea);
 });
 
-console.log("main.js!!");
-
 const events = [
   {
     id: "a",
@@ -37,8 +36,8 @@ const events = [
     end: "",
     title: "文化の日",
     description: "祝日",
-    backgroundColor: "red",
-    borderColor: "red",
+    backgroundColor: "#f5a505",
+    borderColor: "#f5a505",
     editable: true,
   },
   {
@@ -75,27 +74,31 @@ window.onload = (e) => {
     // 日付をクリック、または範囲を選択したイベント
     selectable: true,
     select: function (info) {
-        Window.calendar.selectedDateStart = info.start
-        Window.calendar.selectedDateEnd = info.end
+      Window.calendar.selectedDateStart = info.start;
+      Window.calendar.selectedDateEnd = info.end;
     },
-    
-    eventClick: function (eventName) {
-      // console.dir(event); オブジェクトの中身をチェック。
-      const title = prompt("予定を更新してください:");
-      if (title && title != "") {
-        eventName.title = title;
-        //イベント（予定）の修正
-        $("#calendar").fullCalendar("updateEvent", eventName);
-      } else {
-        //イベント（予定）の削除  idを指定して削除。
-        $("#calendar").fullCalendar("removeEvents", eventName.id);
-      }
-    },
+
+    // eventClick: function (eventName) {
+    //   // console.dir(event); オブジェクトの中身をチェック。
+    //   const title = prompt("予定を更新してください:");
+    //   if (title && title != "") {
+    //     eventName.title = title;
+    //     //イベント（予定）の修正
+    //     $("#calendar").fullCalendar("updateEvent", eventName);
+    //   } else {
+    //     //イベント（予定）の削除  idを指定して削除。
+    //     $("#calendar").fullCalendar("removeEvents", eventName);
+    //   }
+    // },
   });
   calendar.render();
+
+  const m = moment(); //現在の時刻が入る
+  const output = m.format("YYYY-MM-DD");
+
   Window.calendar = {
-      calendar: calendar,
-      selectedDateStart: "2022-11-02",
-      selectedDateEnd: "2022-11-09"
-  }
-};
+    calendar: calendar,
+    selectedDateStart: output,
+    selectedDateEnd: output,
+  };
+};;
