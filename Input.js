@@ -14,6 +14,7 @@ class Input {
     const inputOdoEl = document.createElement("div");
 
     const input = document.createElement("input");
+    input.id = placeholder;
     input.rows = 1;
     input.cols = 30;
     input.placeholder = placeholder;
@@ -58,11 +59,21 @@ class Input {
     button.id = "InputButton"
     button.innerText = "入力！"
     button.addEventListener('click', () => {
-      console.log(Window.calendar);
+      const odoEl = document.getElementById('オドメーター');
+      const odoValue = odoEl.value;
+      odoEl.value = "";
+
+      const costEl = document.getElementById("整備費用");
+      const costValue = costEl.value;
+      costEl.value = "";
+
       Window.calendar.calendar.addEvent({
           title: 'The Title', 
           start: Window.calendar.selectedDateStart,
           end: Window.calendar.selectedDateEnd,
+          description: odoValue + "km\n" + costValue + "円",
+          backgroundColor: "rgb(0, 255, 0)",
+          borderColor: "red",
           allDay: true
         });
     })
