@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const calendarEl = document.getElementById("calendar");
   calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: "dayGridMonth",
+    businessHours: true,
+    editable: true,
     // 日本語化
     locale: "ja",
     // buttonText: {
@@ -70,6 +72,39 @@ window.onload = (e) => {
         content: e.event.extendedProps.description,
       });
     },
+    // 日付をクリック、または範囲を選択したイベント
+    selectable: true,
+    select: function (info) {
+      //alert("selected " + info.startStr + " to " + info.endStr);
+
+      // 入力ダイアログ
+      const eventName = prompt("整備内容入力して下さい");
+
+      if (eventName) {
+        // イベントの追加
+        calendar.addEvent({
+          title: eventName,
+          start: info.start,
+          end: info.end,
+          allDay: true,
+        });
+      }
+    },
+    eventClick: function (eventName) {
+      // console.dir(event); オブジェクトの中身をチェック。
+      const title = prompt("予定を更新してください:");
+      if (title && title != "") {
+        eventName.title = title;
+        //イベント（予定）の修正
+        $("#calendar").fullCalendar("updateEvent", eventName);
+      } else {
+        //イベント（予定）の削除  idを指定して削除。
+        $("#calendar").fullCalendar("removeEvents", eventName.id);
+      }
+    },
   });
   calendar.render();
 };
+
+
+
