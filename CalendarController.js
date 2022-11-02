@@ -13,6 +13,7 @@ class CalendarController {
 
       eventClick: (e) => {
         Window.input.displayEvent(e.event);
+        Window.calendarController.setEvent(e.event);
       },
 
       eventDidMount: (e) => {
@@ -35,6 +36,10 @@ class CalendarController {
     }
   }
 
+  setEvent(event) {
+    this.selectedEvent = event;
+  }
+
   addEvent(title, description) {
     this.calendar.addEvent({
       title: title,
@@ -45,7 +50,7 @@ class CalendarController {
       // borderColor: "red",
       allDay: true
     })
-
+    this.selectedEvent?.remove();
   }
 }
 

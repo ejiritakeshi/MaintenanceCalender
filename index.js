@@ -35,16 +35,11 @@ window.onload = (e) => {
   const calendarController = new CalendarController();
   const calendar = new FullCalendar.Calendar(elem, calendarController.configurationObject);
   calendar.render();
+  
   calendarController.setCalendar(calendar);
+  Window.calendarController = calendarController;
 
   const m = moment(); //現在の時刻が入る
   const output = m.format("YYYY-MM-DD");
 
-  // Window.calendarDate = {
-  //   calendar: calendar,
-  //   selectedDateStart: output,
-  //   selectedDateEnd: output,
-  // };
-
-  Window.calendarController = calendarController;
 };
