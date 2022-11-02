@@ -100,6 +100,22 @@ class Input {
     return area;
   }
 
+  toggleInputButtonTitle() {
+    const inputButton = document.getElementById("InputButton");
+    const removeButton = document.getElementById("RemoveButton");
+    const cancelButton = document.getElementById("CancelButton");
+
+    if(inputButton.innerText === "入力！") {
+      inputButton.innerText = "変更！";
+      removeButton.className = "";
+      cancelButton.className = "";
+    } else {
+      inputButton.innerText = "入力！";
+      removeButton.className = "invisible";
+      cancelButton.className = "invisible";
+    }
+  }
+
   // ボタンクリック
   inputButtonClicked() {
     console.log("input button clicked");
