@@ -4,6 +4,7 @@ class Input {
     
     inputDom.append(this.createValueInput("オドメーター", "km"));
     inputDom.append(this.createValueInput("整備費用", "円"));
+    inputDom.append(this.createMaintenanceMenu())
     inputDom.append(this.createInputButton());
     return inputDom;
   }
@@ -23,6 +24,37 @@ class Input {
     inputOdoEl.append(unitLabel);
 
     return inputOdoEl;
+  }
+
+  // 整備メニュー
+  createMaintenanceMenu() {
+    const maintenanceMenuEl = document.createElement("div");
+    maintenanceMenuEl.className = "menu";
+
+    const menuTitle = document.createElement("span");
+    menuTitle.innerText = "整備内容"
+    maintenanceMenuEl.append(menuTitle);
+
+    const maintenanceMenu = document.createElement("ul");
+    maintenanceMenuEl.append(maintenanceMenu);
+
+    maintenanceMenu.append(this.createMaintenanceItem("整備１"));
+    maintenanceMenu.append(this.createMaintenanceItem("整備２"));
+    maintenanceMenu.append(this.createMaintenanceItem("整備３"));
+
+    return maintenanceMenuEl;
+  }
+
+  createMaintenanceItem(item) {
+    // const itemName = document.createElement("a")
+    // itemName.href = "#";
+    // itemName.innerText = item;
+    
+    const maintenanceItem = document.createElement("li");
+    maintenanceItem.innerText = item;
+//    maintenanceItem.append(itemName);
+
+    return maintenanceItem;
   }
 
   // 入力ボタン
