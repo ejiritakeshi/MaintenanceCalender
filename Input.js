@@ -91,15 +91,30 @@ class Input {
     const maintenance = menuTitle.innerText;
     menuTitle.innerText = "整備内容";
 
-    Window.calendar.calendar.addEvent({
+    Window.calendarDate.calendar.addEvent({
         title: maintenance,
-        start: Window.calendar.selectedDateStart,
-        end: Window.calendar.selectedDateEnd,
+        start: Window.calendarDate.selectedDateStart,
+        end: Window.calendarDate.selectedDateEnd,
         description: odoValue + "km\n" + costValue + "円",
         backgroundColor: "rgb(0, 255, 0)",
         borderColor: "red",
         allDay: true
       });
+  }
+
+  displayEvent(event) {
+    const menuTitle = document.getElementById("menuTitle");
+    menuTitle.innerText = event.title;
+
+    const description = event.extendedProps.description;
+    const kmIndex = description.indexOf("km");
+    const odometer = description.slice(0, kmIndex);
+    const odoEl = document.getElementById("オドメーター");
+    odoEl.value = odometer;
+
+    const cost = description.slice(kmIndex + 3, -1);
+    const costEl = document.getElementById("整備費用");
+    costEl.value = cost;
   }
 }
 
