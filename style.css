@@ -1,4 +1,17 @@
-body {
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 20px;
+
+  background-color: #4998e7;
+  color: #fff;
+}
+
+.content {
   display: flex;
   flex-direction: row;
   justify-content: space-around;

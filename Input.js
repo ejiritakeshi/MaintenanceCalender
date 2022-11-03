@@ -8,6 +8,7 @@ class Input {
     inputDom.append(this.createButton("入力！"));
     inputDom.append(this.createButton("消去"));
     inputDom.append(this.createButton("キャンセル"));
+
     return inputDom;
   }
 
@@ -42,18 +43,9 @@ class Input {
     const maintenanceMenu = document.createElement("ul");
     maintenanceMenuEl.append(maintenanceMenu);
 
-    maintenanceMenu.append(this.createMaintenanceItem("エンジンオイル交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("オイルフィルター交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("クラッチワイヤー調整"));
-    maintenanceMenu.append(this.createMaintenanceItem("車検"));
-    maintenanceMenu.append(this.createMaintenanceItem("スプロケ交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("タイヤ空気圧調整"));
-    maintenanceMenu.append(this.createMaintenanceItem("タイヤ交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("チェーン調整"));
-    maintenanceMenu.append(this.createMaintenanceItem("バッテリー充電"));
-    maintenanceMenu.append(this.createMaintenanceItem("プラグ交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("ブレーキフルード交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("フロントフォークオイル交換"));
+    for (const item of menuItems) {
+      maintenanceMenu.append(this.createMaintenanceItem(item));
+    }
 
     return maintenanceMenuEl;
   }
@@ -93,19 +85,22 @@ class Input {
       default:
         break;
     }
-    button.addEventListener('click', callback);
+    button.addEventListener('click', () => {
+      callback();
+      this.initializeInputForm();
+    });
 
     const area = document.createElement("div");
     area.append(button);
     return area;
   }
 
-  toggleInputButtonTitle() {
+  setInputButtonTitle(title) {
     const inputButton = document.getElementById("InputButton");
     const removeButton = document.getElementById("RemoveButton");
     const cancelButton = document.getElementById("CancelButton");
 
-    if(inputButton.innerText === "入力！") {
+    if(title === "変更！") {
       inputButton.innerText = "変更！";
       removeButton.className = "";
       cancelButton.className = "";
@@ -118,31 +113,40 @@ class Input {
 
   // ボタンクリック
   inputButtonClicked() {
-    console.log("input button clicked");
-
     const odoEl = document.getElementById('オドメーター');
     const odoValue = odoEl.value;
-    odoEl.value = "";
 
     const costEl = document.getElementById("整備費用");
     const costValue = costEl.value;
-    costEl.value = "";
 
     const menuTitle = document.getElementById("menuTitle");
     const maintenance = menuTitle.innerText;
-    menuTitle.innerText = "整備内容";
 
-    Window.calendarController.addEvent(maintenance, odoValue + "km\n" + costValue + "円");
+//    const colorNumber = colors[menuItems.indexOf(maintenance)];
+    
+//    Window.calendarController.addEvent(maintenance, odoValue, costValue, colorNumber);
+    Window.dataController.addEvent(maintenance, odoValue, costValue);
   }
-
+  
   removeButtonClicked() {
     console.log("remove button");
     Window.calendarController.removeEvent();
   }
-
+  
   cancelButtonClicked() {
     console.log("cancel button");
     Window.calendarController.cancelEditing();
+  }
+  
+  initializeInputForm() {
+    const odoEl = document.getElementById('オドメーター');
+    odoEl.value = "";
+  
+    const costEl = document.getElementById("整備費用");
+    costEl.value = "";
+  
+    const menuTitle = document.getElementById("menuTitle");
+    menuTitle.innerText = "整備内容";
   }
 
   // event表示
@@ -162,4 +166,34 @@ class Input {
   }
 }
 
-Window.Input = Input;
+const menuItems = [
+  "エンジンオイル交換",
+  "オイルフィルター交換",
+  "クラッチワイヤー調整",
+  "車検",
+  "スプロケ交換",
+  "タイヤ空気圧調整",
+  "タイヤ交換",
+  "チェーン調整",
+  "バッテリー充電",
+  "プラグ交換",
+  "ブレーキフルード交換",
+  "フロントフォークオイル交換"
+];
+
+const colors = [
+  "#E4883C",
+  "#5DB297",
+  "#4E1985",
+  "#D1464F",
+  "#8574F6",
+  "#70D3A5",
+  "#3E6EF6",
+  "#46080B",
+  "#EAA88A",
+  "#61BBDC",
+  "#BACC41",
+  "#5A2E42"
+]
+
+// Window.Input = Input;
