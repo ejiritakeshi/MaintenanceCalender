@@ -73,6 +73,10 @@ class CalendarController {
     this.selectedEvent = undefined;
     Window.input.setInputButtonTitle("入力！");
   }
+
+  removeAll() {
+    this.calendar.removeAllEvents();
+  }
   
   cancelEditing() {
     this.selectedEvent.setProp("borderColor", "transparent");
@@ -80,5 +84,3 @@ class CalendarController {
     Window.input.setInputButtonTitle("入力！");
   }
 }
-
-// Window.CalendarController = CalendarController;

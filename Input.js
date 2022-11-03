@@ -76,10 +76,12 @@ class Input {
         break;
       case "消去":
         button.id = "RemoveButton";
+        button.className = "invisible";
         callback = this.removeButtonClicked;
         break;
       case "キャンセル":
         button.id = "CancelButton";
+        button.className = "invisible";
         callback = this.cancelButtonClicked;
         break;
       default:
@@ -122,9 +124,6 @@ class Input {
     const menuTitle = document.getElementById("menuTitle");
     const maintenance = menuTitle.innerText;
 
-//    const colorNumber = colors[menuItems.indexOf(maintenance)];
-    
-//    Window.calendarController.addEvent(maintenance, odoValue, costValue, colorNumber);
     Window.dataController.addEvent(maintenance, odoValue, costValue);
   }
   
@@ -194,6 +193,4 @@ const colors = [
   "#61BBDC",
   "#BACC41",
   "#5A2E42"
-]
-
-// Window.Input = Input;
+];
