@@ -95,12 +95,12 @@ class Input {
     return area;
   }
 
-  toggleInputButtonTitle() {
+  setInputButtonTitle(title) {
     const inputButton = document.getElementById("InputButton");
     const removeButton = document.getElementById("RemoveButton");
     const cancelButton = document.getElementById("CancelButton");
 
-    if(inputButton.innerText === "入力！") {
+    if(title === "変更！") {
       inputButton.innerText = "変更！";
       removeButton.className = "";
       cancelButton.className = "";

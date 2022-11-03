@@ -42,11 +42,10 @@ class CalendarController {
     this.selectedEvent?.setProp("borderColor", "transparent");
     this.selectedEvent = event;
 
-    console.log(event);
-    this.calendar.select(event.start, event.end)
+    this.calendar.select(event.start, event.end);
 
     event.setProp("borderColor", "#212B36");
-    Window.input.toggleInputButtonTitle();
+    Window.input.setInputButtonTitle("変更！");
   }
   
   addEvent(title, odo, cost, color, start = this.selectedDate?.start, end = this.selectedDate?.end) {
@@ -68,13 +67,13 @@ class CalendarController {
   removeEvent() {
     this.selectedEvent.remove();
     this.selectedEvent = undefined;
-    Window.input.toggleInputButtonTitle();
+    Window.input.setInputButtonTitle("入力！");
   }
   
   cancelEditing() {
     this.selectedEvent.setProp("borderColor", "transparent");
     this.selectedEvent = undefined;
-    Window.input.toggleInputButtonTitle();
+    Window.input.setInputButtonTitle("入力！");
   }
 }
 
