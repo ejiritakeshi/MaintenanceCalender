@@ -84,5 +84,3 @@ class CalendarController {
     Window.input.setInputButtonTitle("入力！");
   }
 }
-
-// Window.CalendarController = CalendarController;

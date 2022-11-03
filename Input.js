@@ -76,10 +76,12 @@ class Input {
         break;
       case "消去":
         button.id = "RemoveButton";
+        button.className = "invisible";
         callback = this.removeButtonClicked;
         break;
       case "キャンセル":
         button.id = "CancelButton";
+        button.className = "invisible";
         callback = this.cancelButtonClicked;
         break;
       default:
