@@ -42,12 +42,18 @@ class CalendarController {
     this.selectedEvent?.setProp("borderColor", "transparent");
     this.selectedEvent = event;
 
+    console.log(event);
+    this.calendar.select(event.start, event.end)
+
     event.setProp("borderColor", "#212B36");
     Window.input.toggleInputButtonTitle();
   }
   
   addEvent(title, odo, cost, color, start = this.selectedDate?.start, end = this.selectedDate?.end) {
-    console.log(color);
+    if (this.selectedEvent) {
+      this.removeEvent();
+    }
+
     this.calendar.addEvent({
       title: title,
       start: start,
@@ -57,10 +63,6 @@ class CalendarController {
       borderColor: "transparent",
       allDay: true
     })
-
-    if (this.selectedEvent) {
-      this.removeEvent();
-    }
   }
   
   removeEvent() {
