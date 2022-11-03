@@ -15,8 +15,8 @@ class ChartController {
     chartButton.addEventListener("click", () => {
       this.showOdoChart(this);
     });
-    const body = document.body;
-    body.append(chartButton);
+    const input = document.getElementById("input");
+    input.append(chartButton);
   }
   
   showChart(data, kind) {

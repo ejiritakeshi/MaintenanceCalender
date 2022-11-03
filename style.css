@@ -164,7 +164,7 @@ input {
   font-size: 16px
 }
 
-#InputButton,#RemoveButton,#CancelButton {
+#InputButton,#RemoveButton,#CancelButton,#ChartButton {
   margin-left: 30%;
   margin-top: 8%;
   display: inline-block;
@@ -183,9 +183,15 @@ input {
   font-size: 16px
 }
 
-#InputButton:hover ,#RemoveButton:hover ,#CancelButton:hover {
+#InputButton:hover ,#RemoveButton:hover ,#CancelButton:hover,#ChartButton:hover {
   -webkit-transform: rotate(10deg);
   transform: rotate(10deg);
+}
+
+#input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .invisible {
