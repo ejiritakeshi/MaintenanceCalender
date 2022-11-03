@@ -40,6 +40,7 @@ window.onload = (e) => {
   Window.calendarController = calendarController;
 
   Window.dataController = new DataController();
+  Window.dataController.addAllEventsIntoCalendar();
 
   const m = moment(); //現在の時刻が入る
   const output = m.format("YYYY-MM-DD");

@@ -2,23 +2,32 @@ class DataController {
   constructor() {
     this.currentIndex = 0;
     this.currentData = maintenanceData[0];
-
-    console.log(colors);
-
+  }
+  
+  addAllEventsIntoCalendar() {
     for (const event of this.currentData.events) {
       this.addEventIntoCalendar(event);
-    }
+    }    
   }
 
   addEventIntoCalendar(event) {
-    Window.calendarController.addEvent(
-      event.title,
-      event.odo,
-      event.cost,
-      colors[menuItems.indexOf(event.title)],
-      event.start
-    )
+    Window.calendarController.addEvent(event);
   }
+
+  addEvent(title, odo, cost) {
+    const event = { title, odo, cost, id: randomNumber() }
+    this.addEventIntoCalendar(event);
+    this.currentData.events.push(event);
+  }
+
+  removeEvent(id) {
+    const dataIndex = this.currentData.events.findIndex(event => event.id == id);
+    this.currentData.events.splice(dataIndex, 1);
+  }
+}
+
+const randomNumber = () => {
+  return Math.floor(Math.random() * 1000000);
 }
 
 const maintenanceData = [
@@ -28,46 +37,55 @@ const maintenanceData = [
         title: "クラッチワイヤー調整",
         odo: 12232,
         cost: 0,
+        id: randomNumber()
       },
       { start: "2022-10-09",
         title: "バッテリー充電",
         odo: 12289,
         cost: 0,
+        id: randomNumber()
       },
       { start: "2022-10-10",
         title: "クラッチワイヤー調整",
         odo: 12310,
         cost: 0,
+        id: randomNumber()
       },
       { start: "2022-10-15",
         title: "チェーン調整",
         odo: 12399,
         cost: 0,
+        id: randomNumber()
       },
       { start: "2022-10-15",
         title: "エンジンオイル交換",
         odo: 12399,
         cost: 1550,
+        id: randomNumber()
       },
       { start: "2022-10-23",
         title: "プラグ交換",
         odo: 12523,
         cost: 1320,
+        id: randomNumber()
       },
       { start: "2022-10-30",
         title: "タイヤ空気圧調整",
         odo: 12585,
         cost: 0,
+        id: randomNumber()
       },
       { start: "2022-10-31",
         title: "スプロケ交換",
         odo: 12585,
         cost: 1234,
+        id: randomNumber()
       },
       { start: "2022-11-03",
         title: "ブレーキフルード交換",
         odo: 12623,
         cost: 1210,
+        id: randomNumber()
       },
     ]
   },

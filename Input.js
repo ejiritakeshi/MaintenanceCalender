@@ -122,9 +122,10 @@ class Input {
     const menuTitle = document.getElementById("menuTitle");
     const maintenance = menuTitle.innerText;
 
-    const colorNumber = colors[menuItems.indexOf(maintenance)];
+//    const colorNumber = colors[menuItems.indexOf(maintenance)];
     
-    Window.calendarController.addEvent(maintenance, odoValue, costValue, colorNumber);
+//    Window.calendarController.addEvent(maintenance, odoValue, costValue, colorNumber);
+    Window.dataController.addEvent(maintenance, odoValue, costValue);
   }
   
   removeButtonClicked() {
