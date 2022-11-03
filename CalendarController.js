@@ -8,22 +8,17 @@ class CalendarController {
         Window.calendarController.setDate(selectedDate)
       },
 
-      // dateClick: (e) => {
-      //   console.log("dateClick:", e);
-
-      // },
-
       eventClick: (e) => {
         Window.input.displayEvent(e.event);
         Window.calendarController.setEvent(e.event);
       },
 
-      // eventDidMount: (e) => {
-      //   tippy(e.el, {
-      //     // Tippy
-      //     content: e.event.extendedProps.description,
-      //   });
-      // },
+      eventDidMount: (e) => {
+        tippy(e.el, {
+          // Tippy
+          content: e.event.extendedProps.description,
+        });
+      },
     }
   }
 
