@@ -85,7 +85,10 @@
 }
 
 #calendar {
-  width: 2000px;
+  width: 1200px;
+  margin-left: 20px;
+  margin-right: 20px;
+  max-width: 800px;
 }
 
 /* 整備メニュー */
