@@ -14,10 +14,34 @@ class HeaderController {
     usernameEl.innerText = "こんにちは、" + username + "さん";
     userArea.append(usernameEl);
 
-    const vehicleEl = document.createElement("div");
-    vehicleEl.innerText = "test vehicle";
-    userArea.append(vehicleEl);
+    const vehiclesEl = document.createElement("div");
+    vehiclesEl.className = "menu";
+    userArea.append(vehiclesEl);
+
+    const selectedVehicle = document.createElement("span");
+    selectedVehicle.id = "selectedVehicle";
+    vehiclesEl.append(selectedVehicle);
+
+    const vehicleMenu = document.createElement("ul");
+    vehicleMenu.id = "vehicleMenu";
+    vehiclesEl.append(vehicleMenu);
 
     return headerDom;
+  }
+
+  setMenu() {
+    const vehicles = maintenanceData.map(element => element.vehicle);
+    const vehicleMenu = document.getElementById("vehicleMenu");
+    for (const vehicle of vehicles) {
+      const item = document.createElement("li");
+      item.innerText = vehicle;
+      item.addEventListener('click', () => {});
+      vehicleMenu.append(item);
+    }
+  }
+  
+  selectVehicle(vehicle) {
+    const vehicleEl = document.getElementById("selectedVehicle");
+    vehicleEl.innerText = vehicle;
   }
 }
