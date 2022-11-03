@@ -37,11 +37,12 @@ class CalendarController {
       end: date.end
     }
   }
-
+  
   setEvent(event) {
+    this.selectedEvent?.setProp("borderColor", "transparent");
     this.selectedEvent = event;
 
-    event.setProp("borderColor", "red");
+    event.setProp("borderColor", "#212B36");
     Window.input.toggleInputButtonTitle();
   }
   
