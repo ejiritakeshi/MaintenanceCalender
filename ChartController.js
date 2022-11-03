@@ -8,6 +8,15 @@ class ChartController {
 
     const chartBase = document.getElementById("chartBase");
     chartBase.addEventListener("click", this.hideChart);
+
+    const chartButton = document.createElement("button");
+    chartButton.id = "ChartButton";
+    chartButton.innerText = "集計！";
+    chartButton.addEventListener("click", () => {
+      this.showOdoChart(this);
+    });
+    const body = document.body;
+    body.append(chartButton);
   }
   
   showChart(data, kind) {
@@ -38,9 +47,9 @@ class ChartController {
 
   changeChart(chartC) {
     if (chartC.showing === "cost") {
-      chartC.showOdoChart();
+      chartC.showOdoChart(chartC);
     } else {
-      chartC.showCostChart();
+      chartC.showCostChart(chartC);
     }
   }
   
@@ -52,7 +61,7 @@ class ChartController {
     chartBase.removeChild(canvas);
   }
 
-  showOdoChart() {
+  showOdoChart(chartC) {
     const datasource = Window.dataController.currentData.events;
     if (datasource.length < 2) { return }
 
@@ -72,11 +81,11 @@ class ChartController {
       return distance;
     })
 
-    this.showChart(data, "走行距離");
-    this.showing = "distance";
+    chartC.showChart(data, "走行距離");
+    chartC.showing = "distance";
   }
 
-  showCostChart() {
+  showCostChart(chartC) {
     const datasource = Window.dataController.currentData.events;
     const data = [];
     for (const event of datasource) {
@@ -84,7 +93,7 @@ class ChartController {
       const month = date.getMonth();
       data[month] = (data[month] ?? 0) + (Number(event.cost) ?? 0);
     }
-    this.showChart(data, "整備費用");
-    this.showing = "cost";
+    chartC.showChart(data, "整備費用");
+    chartC.showing = "cost";
   }
 }

@@ -61,13 +61,15 @@ class LoginController {
     const calendarController = new CalendarController();
     const calendar = new FullCalendar.Calendar(elem, calendarController.configurationObject);
     calendar.render();
-  
+    
     // Controller
     calendarController.setCalendar(calendar);
     Window.calendarController = calendarController;
-  
+    
     Window.dataController = new DataController();
     Window.dataController.addAllEventsIntoCalendar();
+    
+    Window.chartController = new ChartController();
 
     header.setMenu();
   }
