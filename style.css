@@ -66,6 +66,13 @@
   color: #fff;
 }
 
+/* グラフ */
+#chart {
+  background-color: white;
+  max-width: 600px;
+  padding: 50px;
+}
+
 /* コンテンツ */
 .content {
   display: flex;

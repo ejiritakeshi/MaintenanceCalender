@@ -1,5 +1,9 @@
 class LoginController {
   createLoginScreen() {
+    this.loginClicked();
+    return;
+
+
     const loginBase = document.createElement("div");
     loginBase.className = "loginBase";
     document.body.append(loginBase);
@@ -10,7 +14,6 @@ class LoginController {
     
     const message = document.createElement("h1");
     message.innerText = "Maintenance Calendarに\nログイン";
-//    message.style.color = "black";
     loginArea.append(message);
   
     const inputForm = document.createElement("input");
@@ -29,18 +32,18 @@ class LoginController {
 
   loginClicked() {
     // フォームに入力されていなければ終了
-    const inputForm = document.getElementsByClassName("loginInput")[0];
-    const loginName = inputForm.value;
-    if (loginName === "") {
-      return;
-    }
-    // ユーザー名を保存する。
-    localStorage.setItem("username", loginName);
+//     const inputForm = document.getElementsByClassName("loginInput")[0];
+//     const loginName = inputForm.value;
+//     if (loginName === "") {
+//      return;
+//     }
+//     // ユーザー名を保存する。
+//     localStorage.setItem("username", loginName);
 
-    // ログイン画面を消す。
-    const loginBase = document.querySelector(".loginBase");
-    document.body.removeChild(loginBase);
-    
+    // // ログイン画面を消す。
+    // const loginBase = document.querySelector(".loginBase");
+    // document.body.removeChild(loginBase);
+
     // ログイン後の画面を表示する。
     // Header
     const header = new HeaderController();
@@ -67,5 +70,11 @@ class LoginController {
     Window.dataController.addAllEventsIntoCalendar();
 
     header.setMenu();
+
+
+
+
+    const chartC = new ChartController();
+    chartC.test();
   }
 }
