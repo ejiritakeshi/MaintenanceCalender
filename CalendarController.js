@@ -81,4 +81,4 @@ class CalendarController {
   }
 }
 
-Window.CalendarController = CalendarController;
+// Window.CalendarController = CalendarController;

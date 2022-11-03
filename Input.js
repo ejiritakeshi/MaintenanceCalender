@@ -196,4 +196,4 @@ const colors = [
   "#5A2E42"
 ]
 
-Window.Input = Input;
+// Window.Input = Input;
