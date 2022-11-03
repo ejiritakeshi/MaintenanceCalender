@@ -26,9 +26,22 @@ class ChartController {
     
     const canvas = document.createElement("canvas");
     canvas.id = "chart";
+    canvas.addEventListener("click", () => {
+      setTimeout(() => {
+        this.changeChart(this);
+      }, 0);
+    })
     chartBase.append(canvas);
     
     new Chart(canvas, config);
+  }
+
+  changeChart(chartC) {
+    if (chartC.showing === "cost") {
+      chartC.showOdoChart();
+    } else {
+      chartC.showCostChart();
+    }
   }
   
   hideChart() {
@@ -60,6 +73,7 @@ class ChartController {
     })
 
     this.showChart(data, "走行距離");
+    this.showing = "distance";
   }
 
   showCostChart() {
@@ -71,29 +85,6 @@ class ChartController {
       data[month] = (data[month] ?? 0) + (Number(event.cost) ?? 0);
     }
     this.showChart(data, "整備費用");
-  }
-
-  test() {
-
-  const data = {
-    labels: this.labels,
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-  };
-
-  const config = {
-    type: 'bar',
-    data: data,
-    options: {}
-  };
-
-  const myChart = new Chart(
-    document.getElementById('chart'),
-    config
-  );
+    this.showing = "cost";
   }
 }

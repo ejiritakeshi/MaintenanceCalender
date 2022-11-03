@@ -125,6 +125,11 @@ class Input {
     const maintenance = menuTitle.innerText;
 
     Window.dataController.addEvent(maintenance, odoValue, costValue);
+
+
+
+    const chartC = new ChartController();
+    chartC.showCostChart();
   }
   
   removeButtonClicked() {
