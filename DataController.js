@@ -38,7 +38,7 @@ const randomNumber = () => {
 }
 
 const maintenanceData = [
-  { vehicle: "vehicle1", 
+  { vehicle: "HONDA CBR600RR", 
     events: [
       { start: "2022-10-02",
         end: "2022-10-03",
@@ -105,7 +105,7 @@ const maintenanceData = [
       },
     ]
   },
-  { vehicle: "vehicle2", 
+  { vehicle: "Moto Guzzi V7", 
     events: [
       { start: "2022-11-01",
         end: "2022-11-02",
