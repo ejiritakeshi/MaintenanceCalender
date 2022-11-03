@@ -121,8 +121,10 @@ class Input {
 
     const menuTitle = document.getElementById("menuTitle");
     const maintenance = menuTitle.innerText;
+
+    const colorNumber = colors[menuItems.indexOf(maintenance)];
     
-    Window.calendarController.addEvent(maintenance, odoValue, costValue);
+    Window.calendarController.addEvent(maintenance, odoValue, costValue, colorNumber);
   }
   
   removeButtonClicked() {
@@ -177,5 +179,20 @@ const menuItems = [
   "ブレーキフルード交換",
   "フロントフォークオイル交換"
 ];
+
+const colors = [
+  "#E4883C",
+  "#5DB297",
+  "#4E1985",
+  "#D1464F",
+  "#8574F6",
+  "#70D3A5",
+  "#3E6EF6",
+  "#46080B",
+  "#EAA88A",
+  "#61BBDC",
+  "#BACC41",
+  "#5A2E42"
+]
 
 Window.Input = Input;

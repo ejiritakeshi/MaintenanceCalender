@@ -45,14 +45,15 @@ class CalendarController {
     Window.input.toggleInputButtonTitle();
   }
   
-  addEvent(title, odo, cost) {
+  addEvent(title, odo, cost, color) {
+    console.log(color);
     this.calendar.addEvent({
       title: title,
       start: this.selectedDate.start,
       end: this.selectedDate.end,
       description: odo + "km\n" + cost + "円",
-      // backgroundColor: "rgb(0, 255, 0)",
-      // borderColor: "red",
+      backgroundColor: color,
+      borderColor: "transparent",
       allDay: true
     })
 
