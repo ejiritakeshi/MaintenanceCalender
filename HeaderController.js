@@ -35,13 +35,16 @@ class HeaderController {
     for (const vehicle of vehicles) {
       const item = document.createElement("li");
       item.innerText = vehicle;
-      item.addEventListener('click', () => {});
+      item.addEventListener('click', this.select);
       vehicleMenu.append(item);
     }
-  }
-  
-  selectVehicle(vehicle) {
+
     const vehicleEl = document.getElementById("selectedVehicle");
-    vehicleEl.innerText = vehicle;
+    vehicleEl.innerText = vehicles[0];
+  }
+
+  select() {
+    const vehicleEl = document.getElementById("selectedVehicle");
+    vehicleEl.innerText = this.innerText;
   }
 }

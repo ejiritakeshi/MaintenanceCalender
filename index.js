@@ -23,6 +23,5 @@ window.onload = (e) => {
   Window.dataController = new DataController();
   Window.dataController.addAllEventsIntoCalendar();
 
-  header.selectVehicle(Window.dataController.currentData.vehicle);
   header.setMenu();
 };

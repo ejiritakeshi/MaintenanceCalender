@@ -122,9 +122,6 @@ class Input {
     const menuTitle = document.getElementById("menuTitle");
     const maintenance = menuTitle.innerText;
 
-//    const colorNumber = colors[menuItems.indexOf(maintenance)];
-    
-//    Window.calendarController.addEvent(maintenance, odoValue, costValue, colorNumber);
     Window.dataController.addEvent(maintenance, odoValue, costValue);
   }
   
@@ -194,6 +191,4 @@ const colors = [
   "#61BBDC",
   "#BACC41",
   "#5A2E42"
-]
-
-// Window.Input = Input;
+];
