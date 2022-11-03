@@ -45,15 +45,15 @@ class Input {
     maintenanceMenu.append(this.createMaintenanceItem("エンジンオイル交換"));
     maintenanceMenu.append(this.createMaintenanceItem("オイルフィルター交換"));
     maintenanceMenu.append(this.createMaintenanceItem("クラッチワイヤー調整"));
-    maintenanceMenu.append(this.createMaintenanceItem("車検"));
-    maintenanceMenu.append(this.createMaintenanceItem("スプロケ交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("チェーン調整"));
     maintenanceMenu.append(this.createMaintenanceItem("タイヤ空気圧調整"));
     maintenanceMenu.append(this.createMaintenanceItem("タイヤ交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("チェーン調整"));
-    maintenanceMenu.append(this.createMaintenanceItem("バッテリー充電"));
+    maintenanceMenu.append(this.createMaintenanceItem("スプロケ交換"));
     maintenanceMenu.append(this.createMaintenanceItem("プラグ交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("バッテリー充電"));
     maintenanceMenu.append(this.createMaintenanceItem("ブレーキフルード交換"));
-    maintenanceMenu.append(this.createMaintenanceItem("フロントフォークオイル交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("Frフォークオイル交換"));
+    maintenanceMenu.append(this.createMaintenanceItem("車検"));
 
     return maintenanceMenuEl;
   }
