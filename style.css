@@ -1,5 +1,5 @@
 /* ログイン画面 */
-.loginBase {
+.loginBase{
   position: fixed;
   left: 0;
   top: 0;
@@ -66,6 +66,17 @@
   color: #fff;
 }
 
+/* グラフ */
+.chartBase {
+  visibility: hidden;
+}
+
+#chart {
+  background-color: white;
+  max-width: 600px;
+  padding: 50px;
+}
+
 /* コンテンツ */
 .content {
   display: flex;
@@ -74,7 +85,10 @@
 }
 
 #calendar {
-  width: 2000px;
+  width: 1200px;
+  margin-left: 20px;
+  margin-right: 20px;
+  max-width: 800px;
 }
 
 /* 整備メニュー */
@@ -153,7 +167,7 @@ input {
   font-size: 16px
 }
 
-#InputButton,#RemoveButton,#CancelButton {
+#InputButton,#RemoveButton,#CancelButton,#ChartButton {
   margin-left: 30%;
   margin-top: 8%;
   display: inline-block;
@@ -172,9 +186,15 @@ input {
   font-size: 16px
 }
 
-#InputButton:hover ,#RemoveButton:hover ,#CancelButton:hover {
+#InputButton:hover ,#RemoveButton:hover ,#CancelButton:hover,#ChartButton:hover {
   -webkit-transform: rotate(10deg);
   transform: rotate(10deg);
+}
+
+#input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .invisible {

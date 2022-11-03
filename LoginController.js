@@ -10,7 +10,6 @@ class LoginController {
     
     const message = document.createElement("h1");
     message.innerText = "Maintenance Calendarに\nログイン";
-//    message.style.color = "black";
     loginArea.append(message);
   
     const inputForm = document.createElement("input");
@@ -32,7 +31,7 @@ class LoginController {
     const inputForm = document.getElementsByClassName("loginInput")[0];
     const loginName = inputForm.value;
     if (loginName === "") {
-      return;
+     return;
     }
     // ユーザー名を保存する。
     localStorage.setItem("username", loginName);
@@ -40,7 +39,7 @@ class LoginController {
     // ログイン画面を消す。
     const loginBase = document.querySelector(".loginBase");
     document.body.removeChild(loginBase);
-    
+
     // ログイン後の画面を表示する。
     // Header
     const header = new HeaderController();
@@ -58,13 +57,15 @@ class LoginController {
     const calendarController = new CalendarController();
     const calendar = new FullCalendar.Calendar(elem, calendarController.configurationObject);
     calendar.render();
-  
+    
     // Controller
     calendarController.setCalendar(calendar);
     Window.calendarController = calendarController;
-  
+    
     Window.dataController = new DataController();
     Window.dataController.addAllEventsIntoCalendar();
+    
+    Window.chartController = new ChartController();
 
     header.setMenu();
   }
