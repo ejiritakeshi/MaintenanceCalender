@@ -89,6 +89,64 @@ const maintenanceData = [
       },
     ]
   },
+  { vehicle: "vehicle2", 
+    events: [
+      { start: "2022-11-01",
+        title: "車検",
+        odo: 32768,
+        cost: 131072,
+        id: randomNumber()
+      },
+      { start: "2022-10-10",
+        title: "バッテリー充電",
+        odo: 30307,
+        cost: 0,
+        id: randomNumber()
+      },
+      { start: "2022-10-16",
+        title: "タイヤ交換",
+        odo: 30355,
+        cost: 80800,
+        id: randomNumber()
+      },
+      { start: "2022-10-19",
+        title: "チェーン調整",
+        odo: 30510,
+        cost: 0,
+        id: randomNumber()
+      },
+      { start: "2022-10-22",
+        title: "エンジンオイル交換",
+        odo: 30556,
+        cost: 1250,
+        id: randomNumber()
+      },
+      { start: "2022-10-23",
+        title: "ブレーキフルード交換",
+        odo: 30580,
+        cost: 1020,
+        id: randomNumber()
+      },
+      { start: "2022-10-30",
+        title: "フロントフォークオイル交換",
+        odo: 30593,
+        cost: 1123,
+        id: randomNumber()
+      },
+      { start: "2022-11-01",
+        title: "オイルフィルター交換",
+        odo: 32768,
+        cost: 1332,
+        id: randomNumber()
+      },
+      { start: "2022-11-03",
+        title: "チェーン調整",
+        odo: 32790,
+        cost: 0,
+        id: randomNumber()
+      },
+    ]
+  },
 ];
 
 Window.DataController = DataController;

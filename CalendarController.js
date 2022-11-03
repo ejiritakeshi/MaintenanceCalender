@@ -18,12 +18,12 @@ class CalendarController {
         Window.calendarController.setEvent(e.event);
       },
 
-      eventDidMount: (e) => {
-        tippy(e.el, {
-          // Tippy
-          content: e.event.extendedProps.description,
-        });
-      },
+      // eventDidMount: (e) => {
+      //   tippy(e.el, {
+      //     // Tippy
+      //     content: e.event.extendedProps.description,
+      //   });
+      // },
     }
   }
 
