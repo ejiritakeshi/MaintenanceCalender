@@ -45,6 +45,9 @@ class HeaderController {
 
   select() {
     const vehicleEl = document.getElementById("selectedVehicle");
-    vehicleEl.innerText = this.innerText;
+    const vehicle = this.innerText;
+    vehicleEl.innerText = vehicle;
+
+    Window.dataController.changeVehicleTo(vehicle);
   }
 }
