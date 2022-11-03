@@ -70,11 +70,5 @@ class LoginController {
     Window.dataController.addAllEventsIntoCalendar();
 
     header.setMenu();
-
-
-
-
-    const chartC = new ChartController();
-    chartC.test();
   }
 }

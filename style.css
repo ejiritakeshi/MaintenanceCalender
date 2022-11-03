@@ -1,5 +1,5 @@
 /* ログイン画面 */
-.loginBase {
+.loginBase{
   position: fixed;
   left: 0;
   top: 0;
@@ -67,6 +67,10 @@
 }
 
 /* グラフ */
+.chartBase {
+  visibility: hidden;
+}
+
 #chart {
   background-color: white;
   max-width: 600px;
