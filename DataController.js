@@ -151,7 +151,7 @@ const maintenanceData = [
       },
       { start: "2022-10-30",
         end: "2022-10-31",
-        title: "フロントフォークオイル交換",
+        title: "Frフォークオイル交換",
         odo: 30593,
         cost: 1123,
         id: randomNumber()
