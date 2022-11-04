@@ -10,27 +10,30 @@
 - 車両は複数台登録して切り替えることができます。
 - 月ごとの走行距離と整備費用をグラフ化して表示できます。
 
-スクショ
+![Maintenance Calendarのスクリーンショット](./image/maintenancecalendar.gif)
 
 # チャレンジ
 - 外部のライブラリを使用（カレンダー、グラフ）  
 使い方さえ知らなかったものをドキュメントを読み込んで使えるようになりました
+
 - ES6のクラスを使用  
 基本的にクラスで全ての処理を実行するようにしてみました。
+
 - CSSを使ったアニメーション
 
 
 # 使用した技術
-- FullCalendar  
+- [FullCalendar](https://fullcalendar.io/)  
 カレンダー表示ライブラリー
-リンク
-- Popper  
-吹き出し表示に使用
-- Tippy  
-吹き出し表示に使用
-- Chart.js  
+
+- [Popper](https://popper.js.org/)  
+カレンダー上の吹き出し表示に使用
+
+- [Tippy](https://atomiks.github.io/tippyjs/)  
+カレンダー上の吹き出し表示に使用  
+
+- [Chart.js](https://www.chartjs.org/docs/latest/)  
 グラフ表示ライブラリー
-リンク
 
 # 所感
 何もないまっさらな状態から作り始めるにあたって、ペアの間で最初のイメージすり合わせが一番難しかったと感じています。作って実際に動かしながらお互いにイメージを合わせました。  
